@@ -4,9 +4,11 @@ import useScroll from '../utils/useScroll'
 import { Link } from 'react-router-dom'
 const Container = styled.div`
   width: 100vw;
-  position: ${props => (props.isScroll ? 'fixed' : 'static')};
+  position: fixed;
   z-index: 10000;
   background-color: ${props => (props.isScroll ? '#fff' : 'transparent')};
+  color: ${props => (props.isScroll ? '#000' : '#fff')};
+  transition: background-color 0.5s;
 `
 
 const Wrapper = styled.div`

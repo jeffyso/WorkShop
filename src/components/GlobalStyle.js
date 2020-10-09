@@ -8,11 +8,18 @@ const GlobalStyle = createGlobalStyle`
     
         height:100vh;
         width:100vw;
+        font-family 'Kanit',sans-serif;
+        font-size:20px;
 
-    font-family 'Kanit',sans-serif;
-    font-size:20px;
+        scroll-behavior:smooth;
+  }
+
+  a{
+    text-decoration:none;
+    color:inherit;
 
   }
+
 `
 
 export default GlobalStyle
