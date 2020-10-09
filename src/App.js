@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Suspense } from 'react'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import withHelmet from './utils/withHelmet'
+import routes from './config/routes'
+import GlobalStyle from './components/GlobalStyle'
+import NavBar from './components/NavBar'
 
-function App() {
+function App () {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <GlobalStyle />
+      <Router>
+        <Suspense fallback='...loading'>
+          <NavBar />
+          <Switch>
+            {Object.keys(routes).map(routeKey => (
+              <Route
+                key={routeKey}
+                {...routes[routeKey]}
+
+                // AutoGenerate
+                // path={routes[routeKey].path}
+                // exact={routes[routeKey].exact}
+                // components={routes[routeKey].components}
+              />
+            ))}
+          </Switch>
+        </Suspense>
+      </Router>
+    </>
+  )
 }
 
-export default App;
+export default withHelmet('Atikon | Blog App')(App)
